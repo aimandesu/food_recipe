@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:food_recipe/src/core/utils/enum/recipe_enum.dart';
-import 'package:food_recipe/src/recipe/data/local/db_helper.dart';
+import 'package:food_recipe/src/core/helper/db_helper.dart';
 import 'package:food_recipe/src/recipe/domain/model/ingredient.dart';
 import 'package:food_recipe/src/recipe/domain/model/recipe.dart';
 import 'package:food_recipe/src/recipe/domain/model/step.dart';
@@ -30,6 +30,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     LoadRecipes event,
     Emitter<RecipeState> emit,
   ) async {
+    log('get loaded');
     try {
       emit(
         state.copyWith(
@@ -140,6 +141,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         ),
       );
 
+      log('what is this: ${event.recipe.typeId}');
+
       // Convert Recipe to Map
       final recipeMap = {
         'id': event.recipe.id,
@@ -194,6 +197,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       add(
         LoadRecipeDetails(recipeId: event.recipe.id!),
       );
+      add(LoadRecipes());
     } catch (e) {
       emit(
         state.copyWith(
@@ -266,6 +270,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
           status: RecipeEnum.completed,
         ),
       );
+      log('what is this: sssfaf');
     } catch (e) {
       emit(
         state.copyWith(

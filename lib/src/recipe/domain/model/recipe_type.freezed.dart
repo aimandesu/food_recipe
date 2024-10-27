@@ -22,6 +22,8 @@ RecipeType _$RecipeTypeFromJson(Map<String, dynamic> json) {
 mixin _$RecipeType {
   int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+  Uint8List? get imagePath => throw _privateConstructorUsedError;
 
   /// Serializes this RecipeType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +41,12 @@ abstract class $RecipeTypeCopyWith<$Res> {
           RecipeType value, $Res Function(RecipeType) then) =
       _$RecipeTypeCopyWithImpl<$Res, RecipeType>;
   @useResult
-  $Res call({int? id, String name});
+  $Res call(
+      {int? id,
+      String name,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      Uint8List? imagePath});
 }
 
 /// @nodoc
@@ -59,6 +66,7 @@ class _$RecipeTypeCopyWithImpl<$Res, $Val extends RecipeType>
   $Res call({
     Object? id = freezed,
     Object? name = null,
+    Object? imagePath = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -69,6 +77,10 @@ class _$RecipeTypeCopyWithImpl<$Res, $Val extends RecipeType>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ) as $Val);
   }
 }
@@ -81,7 +93,12 @@ abstract class _$$RecipeTypeImplCopyWith<$Res>
       __$$RecipeTypeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String name});
+  $Res call(
+      {int? id,
+      String name,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      Uint8List? imagePath});
 }
 
 /// @nodoc
@@ -99,6 +116,7 @@ class __$$RecipeTypeImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = null,
+    Object? imagePath = freezed,
   }) {
     return _then(_$RecipeTypeImpl(
       id: freezed == id
@@ -109,14 +127,24 @@ class __$$RecipeTypeImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$RecipeTypeImpl implements _RecipeType {
-  _$RecipeTypeImpl({this.id, required this.name});
+class _$RecipeTypeImpl extends _RecipeType {
+  _$RecipeTypeImpl(
+      {this.id,
+      required this.name,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      this.imagePath})
+      : super._();
 
   factory _$RecipeTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipeTypeImplFromJson(json);
@@ -125,10 +153,13 @@ class _$RecipeTypeImpl implements _RecipeType {
   final int? id;
   @override
   final String name;
+  @override
+  @JsonKey(name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+  final Uint8List? imagePath;
 
   @override
   String toString() {
-    return 'RecipeType(id: $id, name: $name)';
+    return 'RecipeType(id: $id, name: $name, imagePath: $imagePath)';
   }
 
   @override
@@ -137,12 +168,14 @@ class _$RecipeTypeImpl implements _RecipeType {
         (other.runtimeType == runtimeType &&
             other is _$RecipeTypeImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other.imagePath, imagePath));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, const DeepCollectionEquality().hash(imagePath));
 
   /// Create a copy of RecipeType
   /// with the given fields replaced by the non-null parameter values.
@@ -160,9 +193,14 @@ class _$RecipeTypeImpl implements _RecipeType {
   }
 }
 
-abstract class _RecipeType implements RecipeType {
-  factory _RecipeType({final int? id, required final String name}) =
-      _$RecipeTypeImpl;
+abstract class _RecipeType extends RecipeType {
+  factory _RecipeType(
+      {final int? id,
+      required final String name,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      final Uint8List? imagePath}) = _$RecipeTypeImpl;
+  _RecipeType._() : super._();
 
   factory _RecipeType.fromJson(Map<String, dynamic> json) =
       _$RecipeTypeImpl.fromJson;
@@ -171,6 +209,9 @@ abstract class _RecipeType implements RecipeType {
   int? get id;
   @override
   String get name;
+  @override
+  @JsonKey(name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+  Uint8List? get imagePath;
 
   /// Create a copy of RecipeType
   /// with the given fields replaced by the non-null parameter values.

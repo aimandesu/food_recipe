@@ -15,7 +15,7 @@ class RecipeRoute {
     }
 
     final List<String> route = settings.name!.split('/:');
-    Widget page = const Text('page not');
+    Widget page = const Text('page not found');
 
     switch (route.first) {
       case routeRecipe:

@@ -1,9 +1,9 @@
-import 'package:food_recipe/src/recipe/data/local/db_helper.dart';
+import 'package:food_recipe/src/core/helper/db_helper.dart';
 
 abstract class RecipeRepository {
   // database
   DatabaseHelper getDatabaseHelper();
-  void populateInitialData();
+  void populateRecipeData();
 
   // Recipe Type Operations
   Future<int> insertRecipeType(Map<String, dynamic> row);

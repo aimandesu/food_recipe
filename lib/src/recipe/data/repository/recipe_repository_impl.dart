@@ -1,4 +1,4 @@
-import 'package:food_recipe/src/recipe/data/local/db_helper.dart';
+import 'package:food_recipe/src/core/helper/db_helper.dart';
 import 'package:food_recipe/src/recipe/data/local/initial_data.dart';
 import 'package:food_recipe/src/recipe/domain/repository/recipe_repository.dart';
 
@@ -15,7 +15,7 @@ class RecipeRepositoryImpl implements RecipeRepository {
   }
 
   @override
-  void populateInitialData() {
+  void populateRecipeData() {
     InitialData.populate(getDatabaseHelper());
   }
 

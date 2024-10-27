@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:food_recipe/src/core/utils/enum/recipe_type_enum.dart';
-import 'package:food_recipe/src/recipe/data/local/db_helper.dart';
+import 'package:food_recipe/src/core/helper/db_helper.dart';
 import 'package:food_recipe/src/recipe/domain/model/recipe_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -43,6 +43,7 @@ class RecipeTypeBloc extends Bloc<RecipeTypeEvent, RecipeTypeState> {
           .map((map) => RecipeType(
                 id: map['id'],
                 name: map['name'],
+                imagePath: map['image_path'],
               ))
           .toList();
 

@@ -6,8 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_recipe/src/core/utils/styles/styles.dart';
 import 'package:food_recipe/src/recipe/domain/model/ingredient.dart';
 import 'package:food_recipe/src/recipe/domain/model/recipe.dart';
+import 'package:food_recipe/src/recipe/domain/model/recipe_type.dart';
 import 'package:food_recipe/src/recipe/domain/model/step.dart';
 import 'package:food_recipe/src/recipe/presentation/blocs/recipe/recipe_bloc.dart';
+import 'package:food_recipe/src/recipe/presentation/blocs/recipe_type/recipe_type_bloc.dart';
+import 'package:food_recipe/src/recipe/presentation/widgets/dropdown.dart';
 import 'package:food_recipe/src/recipe/presentation/widgets/textform_field.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
@@ -38,6 +41,7 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
 
   @override
   void initState() {
+    log('what issss: ${widget.recipe?.typeId}');
     if (widget.recipe != null) {
       _removeIngredient(0);
       _removeStep(0);
@@ -73,10 +77,6 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
         );
       }).toList();
 
-      log(recipe.toString());
-      log(ingredients.toString());
-      log(steps.toString());
-
       if (widget.recipe == null) {
         context.read<RecipeBloc>().add(
               AddRecipe(
@@ -95,6 +95,7 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
             );
       }
     }
+    Navigator.of(context).pop();
   }
 
   Future<void> pickAndStoreImage() async {
@@ -106,6 +107,13 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
       Uint8List imageBytes = await imageFile.readAsBytes();
       imagePath.value = imageBytes;
     }
+  }
+
+  void onChanged(RecipeType t) {
+    context.read<RecipeTypeBloc>().add(
+          SelectRecipe(id: t.id ?? 0),
+        );
+    typeIdController.text = t.id.toString();
   }
 
   @override
@@ -132,16 +140,41 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTextFormField(
-                  controller: typeIdController,
-                  title: 'Type Recipe',
-                  hintText: 'Type Recipe',
-                  textStyleTitle: TextStyleShared.textStyle.subtitle.copyWith(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12,
-                  ),
+                Text(
+                  'Pick Type',
+                  style: TextStyleShared.textStyle.subtitle,
                 ),
+                const SizedBox(height: 5),
+                BlocBuilder<RecipeTypeBloc, RecipeTypeState>(
+                  builder: (context, typeState) {
+                    return SizedBox(
+                      width: MediaQuery.sizeOf(context).width,
+                      child: GenericDropdown<RecipeType>(
+                        selectedValue: typeState.recipeType.firstWhere(
+                          (e) {
+                            typeIdController.text =
+                                typeState.recipeSelected.toString();
+
+                            return e.id == typeState.recipeSelected;
+                          },
+                          orElse: () {
+                            typeIdController.text =
+                                typeState.recipeType.first.id.toString();
+
+                            return typeState.recipeType.first;
+                          },
+                        ),
+                        items: typeState.recipeType,
+                        itemLabel: (recipe) => recipe.name,
+                        onChanged: onChanged,
+                        hint: 'Select Recipe Type',
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 10),
                 CustomTextFormField(
                   controller: titleController,
                   title: 'Recipe Title',
