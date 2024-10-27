@@ -30,7 +30,6 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     LoadRecipes event,
     Emitter<RecipeState> emit,
   ) async {
-    log('get loaded');
     try {
       emit(
         state.copyWith(
@@ -89,8 +88,6 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       // Insert recipe and get its ID
       final recipeId = await _dbHelper.insertRecipe(recipeMap);
 
-      log('receipt id: $recipeId');
-
       // Insert ingredients
       for (var ingredient in event.ingredients) {
         final ingredientMap = {
@@ -140,8 +137,6 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
           status: RecipeEnum.loading,
         ),
       );
-
-      log('what is this: ${event.recipe.typeId}');
 
       // Convert Recipe to Map
       final recipeMap = {
@@ -270,7 +265,6 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
           status: RecipeEnum.completed,
         ),
       );
-      log('what is this: sssfaf');
     } catch (e) {
       emit(
         state.copyWith(

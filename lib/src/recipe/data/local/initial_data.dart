@@ -160,7 +160,62 @@ class InitialData {
             'Drizzle with olive oil and serve.',
           ],
         },
-        // Add 4 more lunch recipes similarly
+        {
+          'title': 'Grilled Cheese Sandwich',
+          'ingredients': [
+            {'name': 'Bread slices', 'quantity': '2', 'unit': 'pieces'},
+            {'name': 'Cheddar cheese', 'quantity': '2', 'unit': 'slices'},
+            {'name': 'Butter', 'quantity': '1', 'unit': 'tablespoon'},
+          ],
+          'steps': [
+            'Butter the bread slices on one side.',
+            'Place cheese between the bread slices, buttered side out.',
+            'Cook in a skillet over medium heat until golden brown on both sides.',
+          ],
+        },
+        {
+          'title': 'Caesar Salad',
+          'ingredients': [
+            {'name': 'Romaine lettuce', 'quantity': '1', 'unit': 'head'},
+            {'name': 'Croutons', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Parmesan cheese', 'quantity': '0.25', 'unit': 'cup'},
+            {'name': 'Caesar dressing', 'quantity': '3', 'unit': 'tablespoons'},
+          ],
+          'steps': [
+            'Chop the romaine lettuce and place in a large bowl.',
+            'Add croutons and Parmesan cheese.',
+            'Drizzle with Caesar dressing and toss to combine.',
+          ],
+        },
+        {
+          'title': 'Tuna Salad Wrap',
+          'ingredients': [
+            {'name': 'Tuna', 'quantity': '1', 'unit': 'can'},
+            {'name': 'Mayonnaise', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Celery', 'quantity': '0.25', 'unit': 'cup'},
+            {'name': 'Tortilla', 'quantity': '1', 'unit': 'piece'},
+          ],
+          'steps': [
+            'Mix tuna, mayonnaise, and diced celery in a bowl.',
+            'Spoon the mixture onto a tortilla.',
+            'Wrap up and serve cold.',
+          ],
+        },
+        {
+          'title': 'Vegetable Stir-fry',
+          'ingredients': [
+            {'name': 'Broccoli', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Carrots', 'quantity': '1', 'unit': 'piece'},
+            {'name': 'Soy sauce', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Garlic', 'quantity': '1', 'unit': 'clove'},
+          ],
+          'steps': [
+            'Sauté garlic in a pan.',
+            'Add vegetables and stir-fry until tender.',
+            'Add soy sauce and stir until well coated.',
+            'Serve with rice or noodles.',
+          ],
+        },
       ],
       'Dinner': [
         {
@@ -180,48 +235,234 @@ class InitialData {
             'Add salmon and cook for 12 more minutes.',
           ],
         },
-        // Add 4 more dinner recipes similarly
+        {
+          'title': 'Spaghetti Bolognese',
+          'ingredients': [
+            {'name': 'Ground beef', 'quantity': '1', 'unit': 'pound'},
+            {'name': 'Spaghetti', 'quantity': '12', 'unit': 'ounces'},
+            {'name': 'Tomato sauce', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Onion', 'quantity': '1', 'unit': 'piece'},
+            {'name': 'Garlic', 'quantity': '2', 'unit': 'cloves'},
+          ],
+          'steps': [
+            'Cook spaghetti according to package instructions.',
+            'Sauté onion and garlic until translucent.',
+            'Add ground beef and cook until browned.',
+            'Stir in tomato sauce and simmer for 15 minutes.',
+            'Serve the sauce over the spaghetti.',
+          ],
+        },
+        {
+          'title': 'Chicken Stir-fry',
+          'ingredients': [
+            {'name': 'Chicken breast', 'quantity': '1', 'unit': 'piece'},
+            {'name': 'Bell pepper', 'quantity': '1', 'unit': 'piece'},
+            {'name': 'Soy sauce', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Garlic', 'quantity': '1', 'unit': 'clove'},
+          ],
+          'steps': [
+            'Sauté garlic in a pan.',
+            'Add sliced chicken breast and cook until browned.',
+            'Add bell peppers and stir-fry for 5 minutes.',
+            'Add soy sauce and cook for 2 more minutes.',
+            'Serve hot with rice.',
+          ],
+        },
+        {
+          'title': 'Beef Tacos',
+          'ingredients': [
+            {'name': 'Ground beef', 'quantity': '1', 'unit': 'pound'},
+            {'name': 'Taco shells', 'quantity': '6', 'unit': 'pieces'},
+            {'name': 'Cheese', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Lettuce', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Tomato', 'quantity': '1', 'unit': 'piece'},
+          ],
+          'steps': [
+            'Cook ground beef in a pan until browned.',
+            'Warm the taco shells in the oven.',
+            'Assemble tacos with beef, cheese, lettuce, and tomato.',
+            'Serve with salsa and sour cream.',
+          ],
+        },
+        {
+          'title': 'Vegetarian Lasagna',
+          'ingredients': [
+            {'name': 'Lasagna noodles', 'quantity': '9', 'unit': 'pieces'},
+            {'name': 'Ricotta cheese', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Mozzarella cheese', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Spinach', 'quantity': '2', 'unit': 'cups'},
+            {'name': 'Tomato sauce', 'quantity': '1.5', 'unit': 'cups'},
+          ],
+          'steps': [
+            'Preheat oven to 375°F.',
+            'Cook lasagna noodles according to package instructions.',
+            'Layer noodles, ricotta, spinach, and sauce in a baking dish.',
+            'Top with mozzarella cheese.',
+            'Bake for 25-30 minutes until bubbly.',
+          ],
+        },
       ],
       'Dessert': [
         {
-          'title': 'Chocolate Chip Cookies',
+          'title': 'Chocolate Brownies',
           'ingredients': [
-            {'name': 'Flour', 'quantity': '2.25', 'unit': 'cups'},
-            {'name': 'Butter', 'quantity': '1', 'unit': 'cup'},
-            {'name': 'Brown sugar', 'quantity': '0.75', 'unit': 'cup'},
-            {'name': 'White sugar', 'quantity': '0.75', 'unit': 'cup'},
-            {'name': 'Chocolate chips', 'quantity': '2', 'unit': 'cups'},
+            {'name': 'Butter', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Sugar', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Cocoa powder', 'quantity': '0.33', 'unit': 'cup'},
+            {'name': 'Eggs', 'quantity': '2', 'unit': 'pieces'},
+            {'name': 'Vanilla extract', 'quantity': '1', 'unit': 'teaspoon'},
+            {'name': 'Flour', 'quantity': '0.5', 'unit': 'cup'},
           ],
           'steps': [
-            'Cream butter and sugars together.',
-            'Mix in dry ingredients.',
-            'Fold in chocolate chips.',
-            'Drop spoonfuls onto baking sheet.',
-            'Bake at 375°F for 10 minutes.',
+            'Preheat oven to 350°F (175°C).',
+            'Melt butter and mix in sugar and cocoa powder.',
+            'Add eggs and vanilla, stirring until smooth.',
+            'Fold in flour and pour into a greased baking pan.',
+            'Bake for 20-25 minutes and cool before cutting.',
           ],
         },
-        // Add 4 more dessert recipes similarly
+        {
+          'title': 'Cheesecake',
+          'ingredients': [
+            {'name': 'Cream cheese', 'quantity': '16', 'unit': 'ounces'},
+            {'name': 'Sugar', 'quantity': '0.75', 'unit': 'cup'},
+            {'name': 'Eggs', 'quantity': '3', 'unit': 'pieces'},
+            {'name': 'Vanilla extract', 'quantity': '1', 'unit': 'teaspoon'},
+            {'name': 'Graham cracker crust', 'quantity': '1', 'unit': 'piece'},
+          ],
+          'steps': [
+            'Preheat oven to 325°F (160°C).',
+            'Beat cream cheese and sugar until smooth.',
+            'Add eggs and vanilla, mix until well combined.',
+            'Pour mixture into crust and bake for 45 minutes.',
+            'Cool before refrigerating for at least 4 hours.',
+          ],
+        },
+        {
+          'title': 'Apple Pie',
+          'ingredients': [
+            {'name': 'Apples', 'quantity': '6', 'unit': 'pieces'},
+            {'name': 'Sugar', 'quantity': '0.75', 'unit': 'cup'},
+            {'name': 'Cinnamon', 'quantity': '1', 'unit': 'teaspoon'},
+            {'name': 'Flour', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Pie crust', 'quantity': '1', 'unit': 'piece'},
+          ],
+          'steps': [
+            'Preheat oven to 375°F (190°C).',
+            'Peel and slice apples, then toss with sugar, cinnamon, and flour.',
+            'Place mixture into pie crust and top with another crust.',
+            'Bake for 50-60 minutes until golden brown.',
+            'Let cool before serving.',
+          ],
+        },
+        {
+          'title': 'Lemon Bars',
+          'ingredients': [
+            {'name': 'Butter', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Sugar', 'quantity': '1.5', 'unit': 'cups'},
+            {'name': 'Lemon juice', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Flour', 'quantity': '2', 'unit': 'cups'},
+            {'name': 'Eggs', 'quantity': '4', 'unit': 'pieces'},
+          ],
+          'steps': [
+            'Preheat oven to 350°F (175°C).',
+            'Mix flour and butter to form crust, press into a pan, and bake for 20 minutes.',
+            'Whisk sugar, eggs, and lemon juice together.',
+            'Pour over the crust and bake for another 20 minutes.',
+            'Cool and cut into bars.',
+          ],
+        },
+        {
+          'title': 'Tiramisu',
+          'ingredients': [
+            {'name': 'Mascarpone cheese', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Heavy cream', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Coffee', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Ladyfingers', 'quantity': '24', 'unit': 'pieces'},
+            {'name': 'Cocoa powder', 'quantity': '2', 'unit': 'tablespoons'},
+          ],
+          'steps': [
+            'Whisk mascarpone and cream until smooth.',
+            'Dip ladyfingers in coffee and layer them in a dish.',
+            'Spread mascarpone mixture over ladyfingers and repeat layers.',
+            'Dust with cocoa powder and refrigerate for at least 4 hours.',
+          ],
+        }
       ],
       'Snack': [
         {
-          'title': 'Trail Mix',
+          'title': 'Hummus and Veggie Platter',
           'ingredients': [
-            {'name': 'Almonds', 'quantity': '1', 'unit': 'cup'},
-            {'name': 'Cashews', 'quantity': '1', 'unit': 'cup'},
-            {'name': 'Dried cranberries', 'quantity': '0.5', 'unit': 'cup'},
-            {'name': 'Dark chocolate chips', 'quantity': '0.25', 'unit': 'cup'},
-            {'name': 'Pumpkin seeds', 'quantity': '0.25', 'unit': 'cup'},
+            {'name': 'Chickpeas', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Tahini', 'quantity': '0.25', 'unit': 'cup'},
+            {'name': 'Lemon juice', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Olive oil', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Garlic', 'quantity': '1', 'unit': 'clove'},
+            {'name': 'Carrot sticks', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Cucumber slices', 'quantity': '1', 'unit': 'cup'},
           ],
           'steps': [
-            'Combine all nuts in a large bowl.',
-            'Add dried cranberries.',
-            'Mix in chocolate chips.',
-            'Add pumpkin seeds.',
-            'Store in an airtight container.',
+            'Blend chickpeas, tahini, lemon juice, olive oil, and garlic until smooth.',
+            'Serve with carrot sticks and cucumber slices for dipping.',
           ],
         },
-        // Add 4 more snack recipes similarly
-      ],
+        {
+          'title': 'Fruit Salad',
+          'ingredients': [
+            {'name': 'Strawberries', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Blueberries', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Kiwi', 'quantity': '2', 'unit': 'pieces'},
+            {'name': 'Orange juice', 'quantity': '0.25', 'unit': 'cup'},
+            {'name': 'Honey', 'quantity': '1', 'unit': 'tablespoon'},
+          ],
+          'steps': [
+            'Chop strawberries and kiwi into bite-sized pieces.',
+            'Mix with blueberries in a large bowl.',
+            'Drizzle with orange juice and honey, toss gently to combine.',
+            'Serve chilled.',
+          ],
+        },
+        {
+          'title': 'Popcorn',
+          'ingredients': [
+            {'name': 'Popcorn kernels', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Olive oil', 'quantity': '2', 'unit': 'tablespoons'},
+            {'name': 'Salt', 'quantity': '0.5', 'unit': 'teaspoon'},
+          ],
+          'steps': [
+            'Heat olive oil in a large pot.',
+            'Add popcorn kernels and cover with a lid.',
+            'Shake pot occasionally until popping slows down.',
+            'Remove from heat and season with salt.',
+          ],
+        },
+        {
+          'title': 'Yogurt Parfait',
+          'ingredients': [
+            {'name': 'Greek yogurt', 'quantity': '1', 'unit': 'cup'},
+            {'name': 'Granola', 'quantity': '0.5', 'unit': 'cup'},
+            {'name': 'Honey', 'quantity': '1', 'unit': 'tablespoon'},
+            {'name': 'Fresh berries', 'quantity': '0.5', 'unit': 'cup'},
+          ],
+          'steps': [
+            'Layer Greek yogurt, granola, and fresh berries in a glass or bowl.',
+            'Drizzle with honey and serve immediately.',
+          ],
+        },
+        {
+          'title': 'Stuffed Dates',
+          'ingredients': [
+            {'name': 'Medjool dates', 'quantity': '10', 'unit': 'pieces'},
+            {'name': 'Almonds', 'quantity': '10', 'unit': 'pieces'},
+            {'name': 'Cream cheese', 'quantity': '0.25', 'unit': 'cup'},
+          ],
+          'steps': [
+            'Slice dates open and remove pits.',
+            'Stuff each date with an almond and cream cheese.',
+            'Serve as a quick and healthy snack.',
+          ],
+        }
+      ]
     };
 
     // Insert recipes, ingredients, and steps

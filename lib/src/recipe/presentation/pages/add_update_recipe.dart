@@ -41,7 +41,6 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
 
   @override
   void initState() {
-    log('what issss: ${widget.recipe?.typeId}');
     if (widget.recipe != null) {
       _removeIngredient(0);
       _removeStep(0);
@@ -94,8 +93,8 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
               ),
             );
       }
+      Navigator.of(context).pop();
     }
-    Navigator.of(context).pop();
   }
 
   Future<void> pickAndStoreImage() async {
@@ -220,13 +219,16 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
                                 alignment: Alignment.topRight,
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Colors.pink,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: const Icon(
-                                    Icons.update,
-                                    color: Colors.pink,
-                                    size: 30,
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.update,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -287,6 +289,7 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
           itemCount: _ingredients.length,
           itemBuilder: (context, index) {
             return Card(
+              key: ValueKey(_ingredients[index].id),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -338,6 +341,8 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
                             );
                           });
                         },
+                        validator: (value) =>
+                            value?.isEmpty ?? true ? 'Required' : null,
                       ),
                     ),
                     IconButton(
@@ -378,6 +383,7 @@ class _AddUpdateRecipeState extends State<AddUpdateRecipe> {
           itemCount: _steps.length,
           itemBuilder: (context, index) {
             return Card(
+              key: ValueKey(_steps[index].id),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(

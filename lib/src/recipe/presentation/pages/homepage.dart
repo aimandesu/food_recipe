@@ -48,12 +48,12 @@ class Homepage extends StatelessWidget {
           appBar: AppBar(
             leading: const SortDropdown(),
             backgroundColor: Colors.white,
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.search),
-              ),
-            ],
+            // actions: [
+            //   IconButton(
+            //     onPressed: () {},
+            //     icon: const Icon(Icons.search),
+            //   ),
+            // ],
           ),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -85,10 +85,20 @@ class Homepage extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Text(
-                          'View All',
-                          style: TextStyleShared.textStyle.subtitle.copyWith(
-                            color: Colors.pink,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(
+                              RecipeRoute.routeRecipeSpecifType,
+                              arguments: {
+                                'title': 'All Recipes',
+                              },
+                            );
+                          },
+                          child: Text(
+                            'View All',
+                            style: TextStyleShared.textStyle.subtitle.copyWith(
+                              color: Colors.pink,
+                            ),
                           ),
                         ),
                       ],
@@ -103,48 +113,57 @@ class Homepage extends StatelessWidget {
                       ),
                       itemCount: typeState.recipeType.take(4).length,
                       itemBuilder: (context, index) {
-                        return Card(
-                          elevation: 5,
-                          color: Colors.white,
-                          clipBehavior: Clip.antiAlias,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+                        return GestureDetector(
+                          onTap: () => Navigator.of(context).pushNamed(
+                            RecipeRoute.routeRecipeSpecifType,
+                            arguments: {
+                              'recipe_type_id': typeState.recipeType[index].id,
+                              'title': typeState.recipeType[index].name,
+                            },
                           ),
-                          child: Center(
-                            child: Container(
-                              width: double.infinity,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image:
-                                      typeState.recipeType[index].imagePath !=
-                                              null
-                                          ? MemoryImage(typeState
-                                              .recipeType[index].imagePath!)
-                                          : AssetImage(Assets
-                                              .lib
-                                              .src
-                                              .core
-                                              .images
-                                              .breakfast
-                                              .path) as ImageProvider,
-                                  fit: BoxFit.cover,
+                          child: Card(
+                            elevation: 5,
+                            color: Colors.white,
+                            clipBehavior: Clip.antiAlias,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: Container(
+                                width: double.infinity,
+                                height: 200,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image:
+                                        typeState.recipeType[index].imagePath !=
+                                                null
+                                            ? MemoryImage(typeState
+                                                .recipeType[index].imagePath!)
+                                            : AssetImage(Assets
+                                                .lib
+                                                .src
+                                                .core
+                                                .images
+                                                .breakfast
+                                                .path) as ImageProvider,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                typeState.recipeType[index].name,
-                                style: TextStyleShared.textStyle.bodyMedium
-                                    .copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                      offset: const Offset(2.0, 2.0),
-                                      blurRadius: 3.0,
-                                      color: Colors.black.withOpacity(0.8),
-                                    ),
-                                  ],
+                                alignment: Alignment.center,
+                                child: Text(
+                                  typeState.recipeType[index].name,
+                                  style: TextStyleShared.textStyle.bodyMedium
+                                      .copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    shadows: [
+                                      Shadow(
+                                        offset: const Offset(2.0, 2.0),
+                                        blurRadius: 3.0,
+                                        color: Colors.black.withOpacity(0.8),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -199,22 +218,23 @@ class Homepage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(3),
                                 child: Container(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   decoration: BoxDecoration(
-                                    color: Colors.grey.withOpacity(0.3),
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(6),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 0.3,
+                                        blurRadius: 7,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
                                   ),
                                   width: MediaQuery.sizeOf(context).width,
                                   child: Row(
                                     children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(e.title),
-                                          Text(e.typeId.toString()),
-                                        ],
-                                      ),
+                                      Text(e.title),
                                       const Spacer(),
                                       const Icon(
                                         Icons.arrow_forward_ios,
@@ -228,8 +248,9 @@ class Homepage extends StatelessWidget {
                           },
                         );
                       },
-                    )
-                  ]
+                    ),
+                  ],
+                  const SizedBox(height: 80),
                 ],
               ),
             ),

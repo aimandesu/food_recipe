@@ -17,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
     this.inputFormatters,
     this.padding = const EdgeInsets.only(top: 10, bottom: 30),
     this.focusNode,
+    this.obscureText = false,
   });
 
   final String title;
@@ -32,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final EdgeInsetsGeometry padding;
   final FocusNode? focusNode;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,7 @@ class CustomTextFormField extends StatelessWidget {
         Padding(
           padding: padding,
           child: TextFormField(
+            obscureText: obscureText,
             inputFormatters: inputFormatters,
             focusNode: focusNode,
             readOnly: readOnly,

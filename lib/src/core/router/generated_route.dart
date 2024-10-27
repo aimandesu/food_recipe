@@ -9,12 +9,12 @@ import 'package:food_recipe/src/user/presentation/pages/login_page.dart';
 Route<dynamic>? generatedRoute(RouteSettings settings) {
   final page = settings.name!;
 
-  log('page: $page');
+  log('current page: $page');
 
   if (page == LoginRoute.routeLogin) {
     return MaterialPageRoute(
       settings: settings,
-      builder: (_) => LoginPage(),
+      builder: (_) => const LoginPage(),
     );
   } else {
     return RoutesHandler.handler(settings);

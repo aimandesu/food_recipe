@@ -126,7 +126,7 @@ class InformationBtn extends StatelessWidget {
                   width: 2,
                 )
               : null,
-          color: currentTab ? Colors.red : Colors.white,
+          color: currentTab ? Colors.pink : Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
