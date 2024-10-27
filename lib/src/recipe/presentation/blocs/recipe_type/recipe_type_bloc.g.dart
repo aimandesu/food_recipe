@@ -14,6 +14,7 @@ _$RecipeTypeStateImpl _$$RecipeTypeStateImplFromJson(
       recipeType: (json['recipeType'] as List<dynamic>)
           .map((e) => RecipeType.fromJson(e as Map<String, dynamic>))
           .toList(),
+      recipeSelected: (json['recipeSelected'] as num?)?.toInt(),
       errorMsg: json['errorMsg'] as String?,
     );
 
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$RecipeTypeStateImplToJson(
     <String, dynamic>{
       'recipeTypeStatus': _$RecipeTypeEnumEnumMap[instance.recipeTypeStatus]!,
       'recipeType': instance.recipeType,
+      'recipeSelected': instance.recipeSelected,
       'errorMsg': instance.errorMsg,
     };
 

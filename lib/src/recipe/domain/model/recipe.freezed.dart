@@ -24,8 +24,8 @@ mixin _$Recipe {
   @JsonKey(name: 'type_id')
   int get typeId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  @JsonKey(name: 'image_path')
-  String? get imagePath => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+  Uint8List? get imagePath => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -49,7 +49,9 @@ abstract class $RecipeCopyWith<$Res> {
       {int? id,
       @JsonKey(name: 'type_id') int typeId,
       String title,
-      @JsonKey(name: 'image_path') String? imagePath,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      Uint8List? imagePath,
       @JsonKey(name: 'created_at') String? createdAt,
       @JsonKey(name: 'updated_at') String? updatedAt});
 }
@@ -92,7 +94,7 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Uint8List?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -116,7 +118,9 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       {int? id,
       @JsonKey(name: 'type_id') int typeId,
       String title,
-      @JsonKey(name: 'image_path') String? imagePath,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      Uint8List? imagePath,
       @JsonKey(name: 'created_at') String? createdAt,
       @JsonKey(name: 'updated_at') String? updatedAt});
 }
@@ -157,7 +161,7 @@ class __$$RecipeImplCopyWithImpl<$Res>
       imagePath: freezed == imagePath
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Uint8List?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -172,14 +176,17 @@ class __$$RecipeImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RecipeImpl implements _Recipe {
+class _$RecipeImpl extends _Recipe {
   _$RecipeImpl(
       {this.id,
       @JsonKey(name: 'type_id') required this.typeId,
       required this.title,
-      @JsonKey(name: 'image_path') this.imagePath,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      this.imagePath,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt});
+      @JsonKey(name: 'updated_at') this.updatedAt})
+      : super._();
 
   factory _$RecipeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipeImplFromJson(json);
@@ -192,8 +199,8 @@ class _$RecipeImpl implements _Recipe {
   @override
   final String title;
   @override
-  @JsonKey(name: 'image_path')
-  final String? imagePath;
+  @JsonKey(name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+  final Uint8List? imagePath;
   @override
   @JsonKey(name: 'created_at')
   final String? createdAt;
@@ -214,8 +221,7 @@ class _$RecipeImpl implements _Recipe {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.typeId, typeId) || other.typeId == typeId) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath) &&
+            const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -224,8 +230,8 @@ class _$RecipeImpl implements _Recipe {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, typeId, title, imagePath, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, typeId, title,
+      const DeepCollectionEquality().hash(imagePath), createdAt, updatedAt);
 
   /// Create a copy of Recipe
   /// with the given fields replaced by the non-null parameter values.
@@ -243,14 +249,17 @@ class _$RecipeImpl implements _Recipe {
   }
 }
 
-abstract class _Recipe implements Recipe {
+abstract class _Recipe extends Recipe {
   factory _Recipe(
       {final int? id,
       @JsonKey(name: 'type_id') required final int typeId,
       required final String title,
-      @JsonKey(name: 'image_path') final String? imagePath,
+      @JsonKey(
+          name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+      final Uint8List? imagePath,
       @JsonKey(name: 'created_at') final String? createdAt,
       @JsonKey(name: 'updated_at') final String? updatedAt}) = _$RecipeImpl;
+  _Recipe._() : super._();
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$RecipeImpl.fromJson;
 
@@ -262,8 +271,8 @@ abstract class _Recipe implements Recipe {
   @override
   String get title;
   @override
-  @JsonKey(name: 'image_path')
-  String? get imagePath;
+  @JsonKey(name: 'image_path', fromJson: _imageFromJson, toJson: _imageToJson)
+  Uint8List? get imagePath;
   @override
   @JsonKey(name: 'created_at')
   String? get createdAt;

@@ -41,7 +41,7 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         type_id INTEGER,
         title TEXT NOT NULL,
-        image_path TEXT,
+        image_path BLOB,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (type_id) REFERENCES recipe_types (id)

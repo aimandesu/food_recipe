@@ -22,6 +22,7 @@ RecipeTypeState _$RecipeTypeStateFromJson(Map<String, dynamic> json) {
 mixin _$RecipeTypeState {
   RecipeTypeEnum get recipeTypeStatus => throw _privateConstructorUsedError;
   List<RecipeType> get recipeType => throw _privateConstructorUsedError;
+  int? get recipeSelected => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Serializes this RecipeTypeState to a JSON map.
@@ -43,6 +44,7 @@ abstract class $RecipeTypeStateCopyWith<$Res> {
   $Res call(
       {RecipeTypeEnum recipeTypeStatus,
       List<RecipeType> recipeType,
+      int? recipeSelected,
       String? errorMsg});
 }
 
@@ -63,6 +65,7 @@ class _$RecipeTypeStateCopyWithImpl<$Res, $Val extends RecipeTypeState>
   $Res call({
     Object? recipeTypeStatus = null,
     Object? recipeType = null,
+    Object? recipeSelected = freezed,
     Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
@@ -74,6 +77,10 @@ class _$RecipeTypeStateCopyWithImpl<$Res, $Val extends RecipeTypeState>
           ? _value.recipeType
           : recipeType // ignore: cast_nullable_to_non_nullable
               as List<RecipeType>,
+      recipeSelected: freezed == recipeSelected
+          ? _value.recipeSelected
+          : recipeSelected // ignore: cast_nullable_to_non_nullable
+              as int?,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -93,6 +100,7 @@ abstract class _$$RecipeTypeStateImplCopyWith<$Res>
   $Res call(
       {RecipeTypeEnum recipeTypeStatus,
       List<RecipeType> recipeType,
+      int? recipeSelected,
       String? errorMsg});
 }
 
@@ -111,6 +119,7 @@ class __$$RecipeTypeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? recipeTypeStatus = null,
     Object? recipeType = null,
+    Object? recipeSelected = freezed,
     Object? errorMsg = freezed,
   }) {
     return _then(_$RecipeTypeStateImpl(
@@ -122,6 +131,10 @@ class __$$RecipeTypeStateImplCopyWithImpl<$Res>
           ? _value._recipeType
           : recipeType // ignore: cast_nullable_to_non_nullable
               as List<RecipeType>,
+      recipeSelected: freezed == recipeSelected
+          ? _value.recipeSelected
+          : recipeSelected // ignore: cast_nullable_to_non_nullable
+              as int?,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -136,6 +149,7 @@ class _$RecipeTypeStateImpl implements _RecipeTypeState {
   _$RecipeTypeStateImpl(
       {required this.recipeTypeStatus,
       required final List<RecipeType> recipeType,
+      this.recipeSelected,
       this.errorMsg})
       : _recipeType = recipeType;
 
@@ -153,11 +167,13 @@ class _$RecipeTypeStateImpl implements _RecipeTypeState {
   }
 
   @override
+  final int? recipeSelected;
+  @override
   final String? errorMsg;
 
   @override
   String toString() {
-    return 'RecipeTypeState(recipeTypeStatus: $recipeTypeStatus, recipeType: $recipeType, errorMsg: $errorMsg)';
+    return 'RecipeTypeState(recipeTypeStatus: $recipeTypeStatus, recipeType: $recipeType, recipeSelected: $recipeSelected, errorMsg: $errorMsg)';
   }
 
   @override
@@ -169,14 +185,20 @@ class _$RecipeTypeStateImpl implements _RecipeTypeState {
                 other.recipeTypeStatus == recipeTypeStatus) &&
             const DeepCollectionEquality()
                 .equals(other._recipeType, _recipeType) &&
+            (identical(other.recipeSelected, recipeSelected) ||
+                other.recipeSelected == recipeSelected) &&
             (identical(other.errorMsg, errorMsg) ||
                 other.errorMsg == errorMsg));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, recipeTypeStatus,
-      const DeepCollectionEquality().hash(_recipeType), errorMsg);
+  int get hashCode => Object.hash(
+      runtimeType,
+      recipeTypeStatus,
+      const DeepCollectionEquality().hash(_recipeType),
+      recipeSelected,
+      errorMsg);
 
   /// Create a copy of RecipeTypeState
   /// with the given fields replaced by the non-null parameter values.
@@ -199,6 +221,7 @@ abstract class _RecipeTypeState implements RecipeTypeState {
   factory _RecipeTypeState(
       {required final RecipeTypeEnum recipeTypeStatus,
       required final List<RecipeType> recipeType,
+      final int? recipeSelected,
       final String? errorMsg}) = _$RecipeTypeStateImpl;
 
   factory _RecipeTypeState.fromJson(Map<String, dynamic> json) =
@@ -208,6 +231,8 @@ abstract class _RecipeTypeState implements RecipeTypeState {
   RecipeTypeEnum get recipeTypeStatus;
   @override
   List<RecipeType> get recipeType;
+  @override
+  int? get recipeSelected;
   @override
   String? get errorMsg;
 

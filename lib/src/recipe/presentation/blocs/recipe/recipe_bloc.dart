@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:food_recipe/src/core/utils/enum/recipe_enum.dart';
 import 'package:food_recipe/src/recipe/data/local/db_helper.dart';
@@ -29,7 +31,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     Emitter<RecipeState> emit,
   ) async {
     try {
-      emit(state.copyWith(status: RecipeEnum.loading));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.loading,
+        ),
+      );
 
       final recipeMaps = await _dbHelper.getRecipes(typeId: event.typeId);
       final recipes = recipeMaps.map((map) {
@@ -43,15 +49,19 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         );
       }).toList();
 
-      emit(state.copyWith(
-        status: RecipeEnum.completed,
-        recipe: recipes,
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.completed,
+          recipe: recipes,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(
-        status: RecipeEnum.error,
-        errorMsg: 'Failed to load recipes: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.error,
+          errorMsg: 'Failed to load recipes: $e',
+        ),
+      );
     }
   }
 
@@ -60,7 +70,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     Emitter<RecipeState> emit,
   ) async {
     try {
-      emit(state.copyWith(status: RecipeEnum.loading));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.loading,
+        ),
+      );
 
       // Convert Recipe to Map
       final recipeMap = {
@@ -73,6 +87,8 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
 
       // Insert recipe and get its ID
       final recipeId = await _dbHelper.insertRecipe(recipeMap);
+
+      log('receipt id: $recipeId');
 
       // Insert ingredients
       for (var ingredient in event.ingredients) {
@@ -95,17 +111,21 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         await _dbHelper.insertStep(stepMap);
       }
 
-      emit(state.copyWith(
-        status: RecipeEnum.completed,
-        errorMsg: 'Recipe added successfully',
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.completed,
+          errorMsg: 'Recipe added successfully',
+        ),
+      );
 
       add(LoadRecipes());
     } catch (e) {
-      emit(state.copyWith(
-        status: RecipeEnum.error,
-        errorMsg: 'Failed to add recipe: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.error,
+          errorMsg: 'Failed to add recipe: $e',
+        ),
+      );
     }
   }
 
@@ -114,7 +134,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     Emitter<RecipeState> emit,
   ) async {
     try {
-      emit(state.copyWith(status: RecipeEnum.loading));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.loading,
+        ),
+      );
 
       // Convert Recipe to Map
       final recipeMap = {
@@ -160,17 +184,23 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         await _dbHelper.insertStep(stepMap);
       }
 
-      emit(state.copyWith(
-        status: RecipeEnum.completed,
-        errorMsg: 'Recipe updated successfully',
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.completed,
+          errorMsg: 'Recipe updated successfully',
+        ),
+      );
 
-      add(LoadRecipeDetails(recipeId: event.recipe.id!));
+      add(
+        LoadRecipeDetails(recipeId: event.recipe.id!),
+      );
     } catch (e) {
-      emit(state.copyWith(
-        status: RecipeEnum.error,
-        errorMsg: 'Failed to update recipe: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.error,
+          errorMsg: 'Failed to update recipe: $e',
+        ),
+      );
     }
   }
 
@@ -179,7 +209,11 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
     Emitter<RecipeState> emit,
   ) async {
     try {
-      emit(state.copyWith(status: RecipeEnum.loading));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.loading,
+        ),
+      );
 
       final recipeMap = await _dbHelper.getRecipe(event.recipeId);
       if (recipeMap == null) {
@@ -205,7 +239,7 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
       // Load steps
       final stepMaps = await _dbHelper.getSteps(event.recipeId);
       final steps = stepMaps
-          .map((map) => Step(
+          .map((map) => RecipeStep(
                 id: map['id'],
                 recipeId: map['recipe_id'],
                 stepNumber: map['step_number'],
@@ -223,17 +257,22 @@ class RecipeBloc extends Bloc<RecipeEvent, RecipeState> {
         updatedAt: recipeMap['updated_at'],
       );
 
-      emit(state.copyWith(
-        status: RecipeEnum.completed,
-        recipe: [recipe],
-        ingredients: ingredients,
-        steps: steps,
-      ));
+      emit(
+        state.copyWith(
+          // recipe: [recipe],
+          selectedRecipe: recipe,
+          ingredients: ingredients,
+          steps: steps,
+          status: RecipeEnum.completed,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(
-        status: RecipeEnum.error,
-        errorMsg: 'Failed to load recipe details: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: RecipeEnum.error,
+          errorMsg: 'Failed to load recipe details: $e',
+        ),
+      );
     }
   }
 

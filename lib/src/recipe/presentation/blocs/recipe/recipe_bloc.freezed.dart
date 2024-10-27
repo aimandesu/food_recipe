@@ -22,8 +22,9 @@ RecipeState _$RecipeStateFromJson(Map<String, dynamic> json) {
 mixin _$RecipeState {
   RecipeEnum get status => throw _privateConstructorUsedError;
   List<Recipe> get recipe => throw _privateConstructorUsedError;
+  Recipe get selectedRecipe => throw _privateConstructorUsedError;
   List<Ingredient> get ingredients => throw _privateConstructorUsedError;
-  List<Step> get steps => throw _privateConstructorUsedError;
+  List<RecipeStep> get steps => throw _privateConstructorUsedError;
   String? get errorMsg => throw _privateConstructorUsedError;
 
   /// Serializes this RecipeState to a JSON map.
@@ -45,9 +46,12 @@ abstract class $RecipeStateCopyWith<$Res> {
   $Res call(
       {RecipeEnum status,
       List<Recipe> recipe,
+      Recipe selectedRecipe,
       List<Ingredient> ingredients,
-      List<Step> steps,
+      List<RecipeStep> steps,
       String? errorMsg});
+
+  $RecipeCopyWith<$Res> get selectedRecipe;
 }
 
 /// @nodoc
@@ -67,6 +71,7 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
   $Res call({
     Object? status = null,
     Object? recipe = null,
+    Object? selectedRecipe = null,
     Object? ingredients = null,
     Object? steps = null,
     Object? errorMsg = freezed,
@@ -80,6 +85,10 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
+      selectedRecipe: null == selectedRecipe
+          ? _value.selectedRecipe
+          : selectedRecipe // ignore: cast_nullable_to_non_nullable
+              as Recipe,
       ingredients: null == ingredients
           ? _value.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -87,12 +96,22 @@ class _$RecipeStateCopyWithImpl<$Res, $Val extends RecipeState>
       steps: null == steps
           ? _value.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as List<Step>,
+              as List<RecipeStep>,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  /// Create a copy of RecipeState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RecipeCopyWith<$Res> get selectedRecipe {
+    return $RecipeCopyWith<$Res>(_value.selectedRecipe, (value) {
+      return _then(_value.copyWith(selectedRecipe: value) as $Val);
+    });
   }
 }
 
@@ -107,9 +126,13 @@ abstract class _$$RecipeStateImplCopyWith<$Res>
   $Res call(
       {RecipeEnum status,
       List<Recipe> recipe,
+      Recipe selectedRecipe,
       List<Ingredient> ingredients,
-      List<Step> steps,
+      List<RecipeStep> steps,
       String? errorMsg});
+
+  @override
+  $RecipeCopyWith<$Res> get selectedRecipe;
 }
 
 /// @nodoc
@@ -127,6 +150,7 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? recipe = null,
+    Object? selectedRecipe = null,
     Object? ingredients = null,
     Object? steps = null,
     Object? errorMsg = freezed,
@@ -140,6 +164,10 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
           ? _value._recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as List<Recipe>,
+      selectedRecipe: null == selectedRecipe
+          ? _value.selectedRecipe
+          : selectedRecipe // ignore: cast_nullable_to_non_nullable
+              as Recipe,
       ingredients: null == ingredients
           ? _value._ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
@@ -147,7 +175,7 @@ class __$$RecipeStateImplCopyWithImpl<$Res>
       steps: null == steps
           ? _value._steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as List<Step>,
+              as List<RecipeStep>,
       errorMsg: freezed == errorMsg
           ? _value.errorMsg
           : errorMsg // ignore: cast_nullable_to_non_nullable
@@ -162,8 +190,9 @@ class _$RecipeStateImpl implements _RecipeState {
   _$RecipeStateImpl(
       {required this.status,
       required final List<Recipe> recipe,
+      required this.selectedRecipe,
       required final List<Ingredient> ingredients,
-      required final List<Step> steps,
+      required final List<RecipeStep> steps,
       this.errorMsg})
       : _recipe = recipe,
         _ingredients = ingredients,
@@ -182,6 +211,8 @@ class _$RecipeStateImpl implements _RecipeState {
     return EqualUnmodifiableListView(_recipe);
   }
 
+  @override
+  final Recipe selectedRecipe;
   final List<Ingredient> _ingredients;
   @override
   List<Ingredient> get ingredients {
@@ -190,9 +221,9 @@ class _$RecipeStateImpl implements _RecipeState {
     return EqualUnmodifiableListView(_ingredients);
   }
 
-  final List<Step> _steps;
+  final List<RecipeStep> _steps;
   @override
-  List<Step> get steps {
+  List<RecipeStep> get steps {
     if (_steps is EqualUnmodifiableListView) return _steps;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_steps);
@@ -203,7 +234,7 @@ class _$RecipeStateImpl implements _RecipeState {
 
   @override
   String toString() {
-    return 'RecipeState(status: $status, recipe: $recipe, ingredients: $ingredients, steps: $steps, errorMsg: $errorMsg)';
+    return 'RecipeState(status: $status, recipe: $recipe, selectedRecipe: $selectedRecipe, ingredients: $ingredients, steps: $steps, errorMsg: $errorMsg)';
   }
 
   @override
@@ -213,6 +244,8 @@ class _$RecipeStateImpl implements _RecipeState {
             other is _$RecipeStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._recipe, _recipe) &&
+            (identical(other.selectedRecipe, selectedRecipe) ||
+                other.selectedRecipe == selectedRecipe) &&
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients) &&
             const DeepCollectionEquality().equals(other._steps, _steps) &&
@@ -226,6 +259,7 @@ class _$RecipeStateImpl implements _RecipeState {
       runtimeType,
       status,
       const DeepCollectionEquality().hash(_recipe),
+      selectedRecipe,
       const DeepCollectionEquality().hash(_ingredients),
       const DeepCollectionEquality().hash(_steps),
       errorMsg);
@@ -250,8 +284,9 @@ abstract class _RecipeState implements RecipeState {
   factory _RecipeState(
       {required final RecipeEnum status,
       required final List<Recipe> recipe,
+      required final Recipe selectedRecipe,
       required final List<Ingredient> ingredients,
-      required final List<Step> steps,
+      required final List<RecipeStep> steps,
       final String? errorMsg}) = _$RecipeStateImpl;
 
   factory _RecipeState.fromJson(Map<String, dynamic> json) =
@@ -262,9 +297,11 @@ abstract class _RecipeState implements RecipeState {
   @override
   List<Recipe> get recipe;
   @override
+  Recipe get selectedRecipe;
+  @override
   List<Ingredient> get ingredients;
   @override
-  List<Step> get steps;
+  List<RecipeStep> get steps;
   @override
   String? get errorMsg;
 

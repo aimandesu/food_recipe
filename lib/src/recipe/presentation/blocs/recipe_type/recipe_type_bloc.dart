@@ -17,6 +17,18 @@ class RecipeTypeBloc extends Bloc<RecipeTypeEvent, RecipeTypeState> {
         super(RecipeTypeState.initial()) {
     on<LoadRecipeTypes>(_onLoadRecipeTypes);
     on<AddRecipeType>(_onAddRecipeType);
+    on<SelectRecipe>(_selectRecipe);
+  }
+
+  Future<void> _selectRecipe(
+    SelectRecipe event,
+    Emitter emit,
+  ) async {
+    emit(
+      state.copyWith(
+        recipeSelected: event.id,
+      ),
+    );
   }
 
   Future<void> _onLoadRecipeTypes(

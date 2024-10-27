@@ -10,7 +10,7 @@ class LoadRecipes extends RecipeEvent {
 class AddRecipe extends RecipeEvent {
   final Recipe recipe;
   final List<Ingredient> ingredients;
-  final List<Step> steps;
+  final List<RecipeStep> steps;
 
   AddRecipe({
     required this.recipe,
@@ -22,7 +22,7 @@ class AddRecipe extends RecipeEvent {
 class UpdateRecipe extends RecipeEvent {
   final Recipe recipe;
   final List<Ingredient> ingredients;
-  final List<Step> steps;
+  final List<RecipeStep> steps;
 
   UpdateRecipe({
     required this.recipe,

@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Step _$StepFromJson(Map<String, dynamic> json) {
+RecipeStep _$RecipeStepFromJson(Map<String, dynamic> json) {
   return _Step.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Step {
+mixin _$RecipeStep {
   int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'recipe_id')
   int get recipeId => throw _privateConstructorUsedError;
@@ -27,19 +27,21 @@ mixin _$Step {
   int get stepNumber => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
-  /// Serializes this Step to a JSON map.
+  /// Serializes this RecipeStep to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Step
+  /// Create a copy of RecipeStep
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $StepCopyWith<Step> get copyWith => throw _privateConstructorUsedError;
+  $RecipeStepCopyWith<RecipeStep> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StepCopyWith<$Res> {
-  factory $StepCopyWith(Step value, $Res Function(Step) then) =
-      _$StepCopyWithImpl<$Res, Step>;
+abstract class $RecipeStepCopyWith<$Res> {
+  factory $RecipeStepCopyWith(
+          RecipeStep value, $Res Function(RecipeStep) then) =
+      _$RecipeStepCopyWithImpl<$Res, RecipeStep>;
   @useResult
   $Res call(
       {int? id,
@@ -49,16 +51,16 @@ abstract class $StepCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StepCopyWithImpl<$Res, $Val extends Step>
-    implements $StepCopyWith<$Res> {
-  _$StepCopyWithImpl(this._value, this._then);
+class _$RecipeStepCopyWithImpl<$Res, $Val extends RecipeStep>
+    implements $RecipeStepCopyWith<$Res> {
+  _$RecipeStepCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Step
+  /// Create a copy of RecipeStep
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -90,7 +92,7 @@ class _$StepCopyWithImpl<$Res, $Val extends Step>
 }
 
 /// @nodoc
-abstract class _$$StepImplCopyWith<$Res> implements $StepCopyWith<$Res> {
+abstract class _$$StepImplCopyWith<$Res> implements $RecipeStepCopyWith<$Res> {
   factory _$$StepImplCopyWith(
           _$StepImpl value, $Res Function(_$StepImpl) then) =
       __$$StepImplCopyWithImpl<$Res>;
@@ -105,12 +107,12 @@ abstract class _$$StepImplCopyWith<$Res> implements $StepCopyWith<$Res> {
 
 /// @nodoc
 class __$$StepImplCopyWithImpl<$Res>
-    extends _$StepCopyWithImpl<$Res, _$StepImpl>
+    extends _$RecipeStepCopyWithImpl<$Res, _$StepImpl>
     implements _$$StepImplCopyWith<$Res> {
   __$$StepImplCopyWithImpl(_$StepImpl _value, $Res Function(_$StepImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Step
+  /// Create a copy of RecipeStep
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -166,7 +168,7 @@ class _$StepImpl implements _Step {
 
   @override
   String toString() {
-    return 'Step(id: $id, recipeId: $recipeId, stepNumber: $stepNumber, description: $description)';
+    return 'RecipeStep(id: $id, recipeId: $recipeId, stepNumber: $stepNumber, description: $description)';
   }
 
   @override
@@ -188,7 +190,7 @@ class _$StepImpl implements _Step {
   int get hashCode =>
       Object.hash(runtimeType, id, recipeId, stepNumber, description);
 
-  /// Create a copy of Step
+  /// Create a copy of RecipeStep
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -204,7 +206,7 @@ class _$StepImpl implements _Step {
   }
 }
 
-abstract class _Step implements Step {
+abstract class _Step implements RecipeStep {
   factory _Step(
       {final int? id,
       @JsonKey(name: 'recipe_id') required final int recipeId,
@@ -224,7 +226,7 @@ abstract class _Step implements Step {
   @override
   String get description;
 
-  /// Create a copy of Step
+  /// Create a copy of RecipeStep
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)

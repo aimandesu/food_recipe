@@ -23,7 +23,7 @@ class InitialData {
     final breakfast = Recipe(
       typeId: 1, // Breakfast type
       title: 'Classic Pancakes',
-      imagePath: 'assets/images/pancakes.jpg',
+      imagePath: null,
     );
 
     final recipeId = await dbHelper.insertRecipe(breakfast.toJson());
@@ -76,37 +76,37 @@ class InitialData {
     }
 
     final steps = [
-      Step(
+      RecipeStep(
         recipeId: recipeId,
         stepNumber: 1,
         description:
             'In a large bowl, whisk together flour, baking powder, salt, and sugar.',
       ),
-      Step(
+      RecipeStep(
         recipeId: recipeId,
         stepNumber: 2,
         description:
             'In another bowl, whisk together milk, egg, and melted butter.',
       ),
-      Step(
+      RecipeStep(
         recipeId: recipeId,
         stepNumber: 3,
         description:
             'Pour the wet ingredients into the dry ingredients and whisk until just combined. Don\'t overmix; some small lumps are okay.',
       ),
-      Step(
+      RecipeStep(
         recipeId: recipeId,
         stepNumber: 4,
         description:
             'Heat a non-stick pan or griddle over medium heat. Lightly grease if needed.',
       ),
-      Step(
+      RecipeStep(
         recipeId: recipeId,
         stepNumber: 5,
         description:
             'Pour about 1/4 cup of batter for each pancake. Cook until bubbles form on top.',
       ),
-      Step(
+      RecipeStep(
         recipeId: recipeId,
         stepNumber: 6,
         description: 'Flip and cook until golden brown on the other side.',
