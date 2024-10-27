@@ -105,7 +105,11 @@ class _LoginPageState extends State<LoginPage> {
       listener: (context, state) {
         state.maybeWhen(
           authenticated: (user) {
-            Navigator.of(context).pushNamed(RecipeRoute.routeRecipe);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              RecipeRoute.routeRecipe,
+              (Route<dynamic> route) => false,
+            );
           },
           error: (message) {
             ScaffoldMessenger.of(context).showSnackBar(
